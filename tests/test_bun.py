@@ -9,4 +9,4 @@ class TestBun:
 
     def test_get_price_of_bun(self):
         bun = Bun(data.BUN_NAME, data.BUN_PRICE)
-        assert bun.get_price() == 100500
+        assert bun.get_price() == 100

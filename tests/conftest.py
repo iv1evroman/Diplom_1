@@ -17,9 +17,9 @@ def mock_bun():
 @pytest.fixture()
 def mock_ingredient():
     mock = Mock()
-    mock.type = data.INGREDIENT_TYPE
-    mock.name = data.INGREDIENT_NAME
-    mock.price = data.INGREDIENT_PRICE
+    mock.type = data.SAUCE_INGREDIENT_TYPE
+    mock.name = data.SAUCE_INGREDIENT_NAME
+    mock.price = data.SAUCE_INGREDIENT_PRICE
     mock.get_type.return_value = 'соус'
     mock.get_name.return_value = 'сырный'
     mock.get_price.return_value = 50

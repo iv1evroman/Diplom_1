@@ -1,3 +1,5 @@
+import pytest
+
 import data
 from praktikum.bun import Bun
 

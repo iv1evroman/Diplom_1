@@ -1,4 +1,3 @@
-import pytest
 
 import data
 from praktikum.bun import Bun
@@ -13,20 +12,11 @@ class TestBurger:
         burger.set_buns(bun)
         assert burger.bun.get_name() == 'булка' and burger.bun.get_price() == 100
 
-    @pytest.mark.parametrize(
-        'type,name,price',
-        [
-            [data.SAUCE_INGREDIENT_TYPE, data.SAUCE_INGREDIENT_NAME, data.SAUCE_INGREDIENT_PRICE],
-            [data.CUTLET_INGREDIENT_TYPE, data.CUTLET_INGREDIENT_NAME, data.CUTLET_INGREDIENT_PRICE]
-        ]
-    )
-    def test_add_ingredient(self, mock_ingredient, type, name, price):
-        mock_ingredient.get_type.return_value = type
-        mock_ingredient.get_name.return_value = name
-        mock_ingredient.get_price.return_value = price
+    def test_add_ingredient(self):
         burger = Burger()
-        burger.add_ingredient(mock_ingredient)
-        assert {'type': 'соус', 'name': 'сырный', 'price': 50} in burger.ingredients
+        ingredient = Ingredient(data.SAUCE_INGREDIENT_TYPE, data.SAUCE_INGREDIENT_NAME, data.SAUCE_INGREDIENT_PRICE)
+        burger.add_ingredient(ingredient)
+        assert burger.ingredients[0].__dict__ == {'type': 'соус', 'name': 'сырный', 'price': 50}
 
     def test_remove_ingredient(self, mock_ingredient):
         burger = Burger()
